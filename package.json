@@ -5,6 +5,8 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
+        "build:test": "vue-tsc && vite bulid --mode test",
+        "build:pro": "vue-tsc && vite bulid --mode production",
         "build": "vue-tsc && vite build",
         "preview": "vite preview",
         "lint": "eslint src",
