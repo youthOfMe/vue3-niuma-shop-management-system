@@ -9,6 +9,15 @@ import 'element-plus/dist/index.css'
 // 配置element-plus 国际化配置
 
 // @ts-expect-error
-import zhCn from 'element-plus/dist/locale/zh-cn.msj'
+import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 
-createApp(App).mount('#app')
+// 获取vue应用实例
+const app = createApp(App)
+
+// 安装element-plus插件
+app.use(ElementPlus, {
+    locale: zhCn,
+})
+
+// 进行挂载
+app.mount('#app')
