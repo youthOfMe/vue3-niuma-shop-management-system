@@ -1,5 +1,12 @@
 {
     "compilerOptions": {
+        // 配置src别名
+        "baseUrl": "./",
+        "paths": {
+            "@/*": ["src/"]
+        },
+
+        // 配置es6
         "target": "ES2020",
         "useDefineForClassFields": true,
         "module": "ESNext",
