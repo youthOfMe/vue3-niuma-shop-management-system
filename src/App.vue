@@ -6,6 +6,7 @@
         <el-button type="danger" size="default" :icon="Delete">
             失败按钮
         </el-button>
+        <svg-icon name="welcome" :width="66" :height="66"></svg-icon>
     </div>
 </template>
 
