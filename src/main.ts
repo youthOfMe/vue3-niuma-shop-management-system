@@ -23,16 +23,16 @@ import globalcomponent from '@/components'
 app.use(globalcomponent)
 
 // 测试代码 测试假的接口是否可以进行正常使用
-import axios from 'axios'
-// 登录页接口
-axios({
-    url: '/api/user/login',
-    method: 'post',
-    data: {
-        username: 'admin',
-        password: '111111',
-    },
-})
+// import axios from 'axios'
+// // 登录页接口
+// axios({
+//     url: '/api/user/login',
+//     method: 'post',
+//     data: {
+//         username: 'admin',
+//         password: '111111',
+//     },
+// })
 
 // 安装element-plus插件
 app.use(ElementPlus, {
