@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { createApp } from 'vue'
-import './style.css'
 import App from './App.vue'
 
 // 引入element-plus插件于样式
@@ -22,6 +21,18 @@ import globalcomponent from '@/components'
 
 // 安装自定义插件
 app.use(globalcomponent)
+
+// 测试代码 测试假的接口是否可以进行正常使用
+import axios from 'axios'
+// 登录页接口
+axios({
+    url: '/api/user/login',
+    method: 'post',
+    data: {
+        username: 'admin',
+        password: '111111',
+    },
+})
 
 // 安装element-plus插件
 app.use(ElementPlus, {
