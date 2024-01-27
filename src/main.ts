@@ -14,6 +14,8 @@ import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 import 'virtual:svg-icons-register'
 // 引入自定义插件对象，注册整个项目的全局组件
 import globalcomponent from '@/components'
+// 引入全局样式进行使用
+import '@/styles/index.scss'
 
 // 获取vue应用实例
 const app = createApp(App)
