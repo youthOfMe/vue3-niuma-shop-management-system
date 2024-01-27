@@ -1,6 +1,6 @@
 <template>
     <div>
-        <router-view></router-view>
+        <h1>我是数据大屏一级组件</h1>
     </div>
 </template>
 

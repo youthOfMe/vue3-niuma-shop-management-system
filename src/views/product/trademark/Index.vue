@@ -1,6 +1,6 @@
 <template>
     <div>
-        <router-view></router-view>
+        <h1>品牌管理</h1>
     </div>
 </template>
 
