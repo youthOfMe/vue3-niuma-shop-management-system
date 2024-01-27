@@ -12,11 +12,15 @@
                     <h1>Hello</h1>
                     <h2>欢迎来到牛马商城后台管理系统</h2>
                     <el-form-item prop="username">
-                        <el-input v-model="loginForm.username"></el-input>
+                        <el-input
+                            v-model="loginForm.username"
+                            :prefix-icon="User"
+                        ></el-input>
                     </el-form-item>
                     <el-form-item prop="password">
                         <el-input
                             type="password"
+                            :prefix-icon="Lock"
                             v-model="loginForm.password"
                             show-password
                         ></el-input>
@@ -49,6 +53,8 @@ import { useRoute } from 'vue-router'
 import { getTime } from '@/utils/time'
 // 引入element
 import { ElNotification } from 'element-plus'
+// 引入输出框图标
+import { User, Lock } from '@element-plus/icons-vue'
 
 // 创建用户仓库进行使用
 const userStore = useUserStore()
