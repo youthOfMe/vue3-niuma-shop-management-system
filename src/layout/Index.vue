@@ -19,5 +19,27 @@
 
 .layout_slider {
     color: white;
+    width: $base-menu-width;
+    height: 100vh;
+    background-color: $base-menu-background;
+}
+
+.layout_tabBar {
+    width: calc(100% - $base-menu-width);
+    height: $base-tabbar-height;
+    position: fixed;
+    top: 0;
+    left: $base-menu-width;
+}
+
+.layout_main {
+    position: absolute;
+    width: calc(100% - $base-menu-width);
+    height: calc(100vh - $base-tabbar-height);
+    background-color: yellowgreen;
+    left: $base-menu-width;
+    top: $base-tabbar-height;
+    padding: 20px;
+    overflow: auto;
 }
 </style>

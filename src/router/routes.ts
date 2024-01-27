@@ -15,7 +15,7 @@ export const constantRoute = [
         path: '/',
         component: () => import('@/layout/Index.vue'),
         name: 'layout',
-        redirect: '/home',
+        // redirect: '/home',
         children: [
             {
                 path: '/home',
