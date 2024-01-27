@@ -16,6 +16,8 @@ import 'virtual:svg-icons-register'
 import globalcomponent from '@/components'
 // 引入全局样式进行使用
 import '@/styles/index.scss'
+// 引入大仓库
+import pinia from './store'
 
 // 获取vue应用实例
 const app = createApp(App)
@@ -27,6 +29,8 @@ app.use(ElementPlus, {
 app.use(router as any)
 // 安装自定义插件
 app.use(globalcomponent)
+// 安装仓库
+app.use(pinia)
 
 // 进行挂载
 app.mount('#app')

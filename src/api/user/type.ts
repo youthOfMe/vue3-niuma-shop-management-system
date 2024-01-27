@@ -4,14 +4,15 @@ export interface loginForm {
     password: string
 }
 
-interface datatype {
-    token: string
+interface dataType {
+    token?: string
+    message?: string
 }
 
 // 登录接口返回数据类型
 export interface loginResponseData {
     code: number
-    data: datatype
+    data: dataType
 }
 
 // 定义服务器返回的用户信息相关的数据类型

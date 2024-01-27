@@ -10,6 +10,6 @@ enum API {
 // 暴露请求函数
 // 登录的接口方法
 export const reqLogin = (data: loginForm) =>
-    request.post<loginResponseData>(API.LOGIN_URL, data)
+    request.post<any, loginResponseData>(API.LOGIN_URL, data)
 // 获取用户信息的接口
 export const reqUserInfo = () => request.get<userResponseData>(API.USERINFO_URL)
