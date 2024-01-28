@@ -2,6 +2,8 @@
 import { defineStore } from 'pinia'
 // 引入数据类型
 import type { UserState } from './types/type'
+// 引入路由(常量路由)
+import { constantRoute } from '@/router/routes'
 // 引入操作本地存储的工具方法
 import { SET_TOKEN, GET_TOKEN } from '@/utils/token'
 import { loginResponseData, loginForm } from '@/api/user/type'
@@ -12,6 +14,7 @@ const useUserStore = defineStore('User', {
     state: (): UserState => {
         return {
             token: GET_TOKEN(), // 用户登录时的Token
+            menuRoutes: constantRoute, // 仓库中拿出生成菜单需要的数组
         }
     },
     actions: {
