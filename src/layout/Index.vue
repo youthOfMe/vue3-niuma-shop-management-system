@@ -21,7 +21,9 @@
         <!-- 顶部导航 -->
         <div class="layout_tabBar"></div>
         <!-- 内容展示区域 -->
-        <div class="layout_main"></div>
+        <div class="layout_main">
+            <Main></Main>
+        </div>
     </div>
 </template>
 
@@ -33,6 +35,8 @@ import { useRoute } from 'vue-router'
 import Logo from './logo/Index.vue'
 // 引入菜单组件
 import Menu from './menu/Index.vue'
+// 引入右侧的展示组件
+import Main from './main/Index.vue'
 
 // 获取与用户相关的小仓库
 import useUserStore from '@/store/modules/user'
@@ -55,6 +59,13 @@ const $route = useRoute()
     width: $base-menu-width;
     height: 100vh;
     background-color: $base-menu-background;
+    .scrollbar {
+        width: 100%;
+        height: calc(100vh - $base-menu-logo-height - 40px);
+        .el-menu {
+            border-right: 0;
+        }
+    }
 }
 
 .layout_tabBar {
