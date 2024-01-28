@@ -19,7 +19,9 @@
             </el-scrollbar>
         </div>
         <!-- 顶部导航 -->
-        <div class="layout_tabBar"></div>
+        <div class="layout_tabBar">
+            <Tabbar></Tabbar>
+        </div>
         <!-- 内容展示区域 -->
         <div class="layout_main">
             <Main></Main>
@@ -37,6 +39,8 @@ import Logo from './logo/Index.vue'
 import Menu from './menu/Index.vue'
 // 引入右侧的展示组件
 import Main from './main/Index.vue'
+// 引入顶部的导航组件
+import Tabbar from './tabbar/Index.vue'
 
 // 获取与用户相关的小仓库
 import useUserStore from '@/store/modules/user'
