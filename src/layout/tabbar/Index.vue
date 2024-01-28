@@ -1,11 +1,16 @@
 <template>
     <div class="tabbar">
-        <div class="tabbar_left"></div>
+        <div class="tabbar_left">
+            <BreadCrumb></BreadCrumb>
+        </div>
         <div class="tabbar_right"></div>
     </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+// 引入面包屑组件
+import BreadCrumb from './breadCrumb/Index.vue'
+</script>
 
 <style scoped lang="scss">
 .tabbar {
