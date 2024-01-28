@@ -3,6 +3,20 @@
         <!-- 左侧菜单 -->
         <div class="layout_slider">
             <Logo></Logo>
+            <!-- 展示菜单 -->
+            <!-- 滚动组件 -->
+            <el-scrollbar class="scrollbar">
+                <!-- 菜单组件 -->
+                <el-menu
+                    background-color="#001529"
+                    text-color="white"
+                    active-text-color="yellowgreen"
+                    :default-active="$route.path"
+                >
+                    <!-- 采用封装 -->
+                    <Menu :menu-list="userStore.menuRoutes"></Menu>
+                </el-menu>
+            </el-scrollbar>
         </div>
         <!-- 顶部导航 -->
         <div class="layout_tabBar"></div>
@@ -12,8 +26,22 @@
 </template>
 
 <script setup lang="ts">
+// 引入路由对象钩子
+import { useRoute } from 'vue-router'
+
 // 引入左侧菜单logo子组件
 import Logo from './logo/Index.vue'
+// 引入菜单组件
+import Menu from './menu/Index.vue'
+
+// 获取与用户相关的小仓库
+import useUserStore from '@/store/modules/user'
+
+// 创建用户仓库
+const userStore = useUserStore()
+
+// 获取路由对象
+const $route = useRoute()
 </script>
 
 <style scoped lang="scss">
