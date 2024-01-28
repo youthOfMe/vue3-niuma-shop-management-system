@@ -4,6 +4,7 @@
         <el-menu-item
             v-if="!item.children && !item.meta.hidden"
             :index="item.path"
+            @click="goRoute"
         >
             <el-icon>
                 <component :is="item.meta.icon"></component>
@@ -21,6 +22,7 @@
                 !item.children[0].hidden
             "
             :index="item.children[0].path"
+            @click="goRoute"
         >
             <el-icon>
                 <component :is="item.children[0].meta.icon"></component>
@@ -56,6 +58,11 @@ defineProps(['menuList'])
 
 // 获取路由器对象
 const $router = useRouter()
+// 点击菜单的回调
+const goRoute = (vc: any) => {
+    // 路由跳转
+    $router.push(vc.index)
+}
 </script>
 
 <!-- 递归组件必须有名字 多script标签 必须语言相同 -->
