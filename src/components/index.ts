@@ -3,7 +3,8 @@ import SvgIcon from './SvgIcon/Index.vue'
 
 // 全局对象的对象类型
 import type { allGlobalComponentType } from '@/type/index.d.ts'
-
+// 引入element-plus提供的全部图标组件
+import * as ElementPlustIconsVue from '@element-plus/icons-vue'
 // 全局对象
 const allGlobalComponent: allGlobalComponentType = {
     svgIcon: SvgIcon,
@@ -18,5 +19,9 @@ export default {
             // 注册为全局组件
             app.component(item, allGlobalComponent[item])
         })
+        // 将element-plus提供的图标注册为全局组件
+        for (const [key, component] of Object.entries(ElementPlustIconsVue)) {
+            app.component(key, component)
+        }
     },
 }
