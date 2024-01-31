@@ -5,7 +5,7 @@ import type { UserState } from './types/type'
 // 引入路由(常量路由)
 import { constantRoute } from '@/router/routes'
 // 引入操作本地存储的工具方法
-import { SET_TOKEN, GET_TOKEN } from '@/utils/token'
+import { SET_TOKEN, GET_TOKEN, REMOVE_TOKEN } from '@/utils/token'
 import { loginResponseData, loginForm } from '@/api/user/type'
 // 用户登录的方法
 import { reqLogin, reqUserInfo } from '@/api/user'
@@ -41,6 +41,14 @@ const useUserStore = defineStore('User', {
                 this.avatar = result.data.checkUser.avatar
                 return 'ok'
             } else return Promise.reject()
+        },
+
+        // 退出登录
+        userLogout() {
+            this.token = ''
+            this.username = ''
+            this.avatar = ''
+            REMOVE_TOKEN()
         },
     },
 })
