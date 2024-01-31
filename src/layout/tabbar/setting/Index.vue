@@ -5,7 +5,12 @@
         circle
         @click="updateRefresh"
     ></el-button>
-    <el-button size="small" icon="FullScreen" circle></el-button>
+    <el-button
+        size="small"
+        icon="FullScreen"
+        circle
+        @click="fullScreen"
+    ></el-button>
     <el-button size="small" icon="Setting" circle></el-button>
     <img
         :src="userStore.avatar"
@@ -42,6 +47,13 @@ const LayOutSettingStore = useLayOutSettingStore()
 // 刷新按钮的回调
 const updateRefresh = () => {
     LayOutSettingStore.refresh = !LayOutSettingStore.refresh
+}
+
+// 全屏按钮点击时的回调
+const fullScreen = () => {
+    const full = document.fullscreenElement
+    !full && document.documentElement.requestFullscreen() // 进入全屏
+    full && document.exitFullscreen() // 退出全屏
 }
 </script>
 
