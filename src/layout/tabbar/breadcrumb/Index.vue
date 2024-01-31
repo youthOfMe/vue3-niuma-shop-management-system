@@ -1,6 +1,6 @@
 <template>
     <!-- 顶部左侧的静态资源 -->
-    <el-icon style="margin-right: 10px">
+    <el-icon style="margin-right: 10px" @click="changeIcon">
         <component
             :is="LayOutSettingStore.fold ? 'Fold' : 'Expand'"
         ></component>
@@ -35,6 +35,11 @@ const $route = useRoute()
 
 // 获取layout配置仓库
 const LayOutSettingStore = useLayOutSettingStore()
+
+// 点击图标的方法
+const changeIcon = () => {
+    LayOutSettingStore.fold = !LayOutSettingStore.fold
+}
 </script>
 
 <style scoped></style>
