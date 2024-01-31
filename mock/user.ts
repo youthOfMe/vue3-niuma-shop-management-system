@@ -1,4 +1,4 @@
-//用户信息数据
+// createUserList: 此函数执行会返回一个数组，数组中包含两个对象
 function createUserList() {
     return [
         {
@@ -26,6 +26,9 @@ function createUserList() {
     ]
 }
 
+// 对外暴露一个数组: 数组里面包含两个接口
+// 登录假的接口
+// 获取用户信息的假的接口
 export default [
     // 用户登录接口
     {
