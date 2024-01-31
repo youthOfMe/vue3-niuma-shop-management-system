@@ -3,13 +3,17 @@
         <div class="tabbar_left">
             <BreadCrumb></BreadCrumb>
         </div>
-        <div class="tabbar_right"></div>
+        <div class="tabbar_right">
+            <Setting></Setting>
+        </div>
     </div>
 </template>
 
 <script setup lang="ts">
 // 引入面包屑组件
 import BreadCrumb from './breadCrumb/Index.vue'
+// 引入顶部设置栏组件
+import Setting from './setting/Index.vue'
 </script>
 
 <style scoped lang="scss">
