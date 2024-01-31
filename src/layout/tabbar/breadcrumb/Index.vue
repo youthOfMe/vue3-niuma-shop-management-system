@@ -1,7 +1,9 @@
 <template>
     <!-- 顶部左侧的静态资源 -->
     <el-icon style="margin-right: 10px">
-        <component :is="'Fold'"></component>
+        <component
+            :is="LayOutSettingStore.fold ? 'Fold' : 'Expand'"
+        ></component>
     </el-icon>
     <!-- 左侧的面包屑 -->
     <el-breadcrumb separator-icon="ArrowRight">
@@ -25,9 +27,14 @@
 <script setup lang="ts">
 // 引入页面路由对象
 import { useRoute } from 'vue-router'
+// 引layout配置相关的仓库
+import useLayOutSettingStore from '@/store/modules/setting'
 
 // 获取页面路由对象
 const $route = useRoute()
+
+// 获取layout配置仓库
+const LayOutSettingStore = useLayOutSettingStore()
 </script>
 
 <style scoped></style>
