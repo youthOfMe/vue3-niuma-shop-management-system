@@ -15,6 +15,9 @@ const useUserStore = defineStore('User', {
         return {
             token: GET_TOKEN(), // 用户登录时的Token
             menuRoutes: constantRoute, // 仓库中拿出生成菜单需要的数组
+            // 初始化用户信息数据
+            username: '',
+            avatar: '',
         }
     },
     actions: {
