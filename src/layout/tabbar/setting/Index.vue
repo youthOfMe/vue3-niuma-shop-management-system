@@ -66,7 +66,7 @@ const $route = useRoute()
 
 // 退出登录点击的回调
 const logout = () => {
-    userStore.userInfo
+    userStore.userLogout()
     // 跳转到登录页面
     $router.push({ path: '/login', query: { redirect: $route.path } })
 }

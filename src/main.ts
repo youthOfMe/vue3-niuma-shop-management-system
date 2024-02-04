@@ -32,5 +32,8 @@ app.use(globalcomponent)
 // 安装仓库
 app.use(pinia)
 
+// 引入路由鉴权代码
+import './permission'
+
 // 进行挂载
 app.mount('#app')
