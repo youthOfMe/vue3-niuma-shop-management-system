@@ -9,11 +9,14 @@ import useUserStore from './store/modules/user'
 const userStore = useUserStore(pinia)
 
 // 引入加载插件
-import nprogress from '@/utils/nprogress'
+import nprogress from '@/utils/nprogress.js'
+// 引入系统配置信息
+import setting from './setting'
 
 // 全局守卫
 // 全局前置守卫
 router.beforeEach(async (to: any, from: any, next: any) => {
+    document.title = setting.title + '-' + to.meta.title
     // 加载插件启动
     nprogress.start()
     // 获取token判断用户登录了还是没有登录
