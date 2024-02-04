@@ -1,16 +1,6 @@
 <template>
-    <el-button
-        size="small"
-        icon="Refresh"
-        circle
-        @click="updateRefresh"
-    ></el-button>
-    <el-button
-        size="small"
-        icon="FullScreen"
-        circle
-        @click="fullScreen"
-    ></el-button>
+    <el-button size="small" icon="Refresh" circle @click="updateRefresh"></el-button>
+    <el-button size="small" icon="FullScreen" circle @click="fullScreen"></el-button>
     <el-button size="small" icon="Setting" circle></el-button>
     <img
         :src="userStore.avatar"

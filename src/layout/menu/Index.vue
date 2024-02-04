@@ -33,9 +33,7 @@
         </el-menu-item>
         <!-- 有子路由且个数大于一个 -->
         <el-sub-menu
-            v-if="
-                item.children && item.children.length > 1 && !item.meta.hidden
-            "
+            v-if="item.children && item.children.length > 1 && !item.meta.hidden"
             :index="item.path"
         >
             <template #title>

@@ -3,19 +3,11 @@
         <el-row>
             <el-col :span="12" :xs="0">占位的格子</el-col>
             <el-col :span="12" :xs="24">
-                <el-form
-                    class="login_form"
-                    :model="loginForm"
-                    :rules="rules"
-                    ref="loginForms"
-                >
+                <el-form class="login_form" :model="loginForm" :rules="rules" ref="loginForms">
                     <h1>Hello</h1>
                     <h2>欢迎来到牛马商城后台管理系统</h2>
                     <el-form-item prop="username">
-                        <el-input
-                            v-model="loginForm.username"
-                            :prefix-icon="User"
-                        ></el-input>
+                        <el-input v-model="loginForm.username" :prefix-icon="User"></el-input>
                     </el-form-item>
                     <el-form-item prop="password">
                         <el-input

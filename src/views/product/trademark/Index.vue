@@ -1,17 +1,10 @@
 <template>
     <el-card class="box-card">
         <!-- 卡片顶部添加品牌按钮 -->
-        <el-button type="primary" size="default" icon="Plus">
-            添加品牌
-        </el-button>
+        <el-button type="primary" size="default" icon="Plus">添加品牌</el-button>
         <!-- 表格组件: 用于展示已有的平台数据 -->
         <el-table style="margin: 10px 0" :border="true">
-            <el-table-colum
-                label="序号"
-                width="80px"
-                aligin="center"
-                type="index"
-            ></el-table-colum>
+            <el-table-colum label="序号" width="80px" aligin="center" type="index"></el-table-colum>
             <el-table-column label="品牌名称">
                 <template></template>
             </el-table-column>
