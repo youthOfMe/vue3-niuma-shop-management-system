@@ -8,9 +8,14 @@ import useUserStore from './store/modules/user'
 // 搭建用户信息仓库
 const userStore = useUserStore(pinia)
 
+// 引入加载插件
+import nprogress from '@/utils/nprogress'
+
 // 全局守卫
 // 全局前置守卫
 router.beforeEach(async (to: any, from: any, next: any) => {
+    // 加载插件启动
+    nprogress.start()
     // 获取token判断用户登录了还是没有登录
     const token = userStore.token
     // 获取用户名字
@@ -42,4 +47,9 @@ router.beforeEach(async (to: any, from: any, next: any) => {
         //     ? next()
         //     : next({ path: '/login', query: { redirect: to.path } })
     }
+})
+// 全局后置守卫
+router.afterEach((to: any, from: any, next: any) => {
+    // 加载结束
+    nprogress.done()
 })
