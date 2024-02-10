@@ -1,7 +1,9 @@
 <template>
     <el-card class="box-card">
         <!-- 卡片顶部添加品牌按钮 -->
-        <el-button type="primary" size="default" icon="Plus">添加品牌</el-button>
+        <el-button type="primary" size="default" icon="Plus" @click="addTrademark">
+            添加品牌
+        </el-button>
         <!-- 表格组件: 用于展示已有的平台数据 -->
         <el-table style="margin: 10px 0" :border="true" :data="trademarkArr">
             <el-table-column
@@ -44,19 +46,26 @@
     </el-card>
     <!-- 对话框组件 -->
     <el-dialog v-model="dialogFormVisble" title="添加品牌">
-        <el-form style="width: 80%">
+        <el-form style="width: 80%" :model="trademarkParams">
             <el-form-item label="品牌名称" label-width="80px">
-                <el-input placeholder="请您输入品牌的名称"></el-input>
+                <el-input
+                    placeholder="请您输入品牌的名称"
+                    v-model="trademarkParams.tmName"
+                ></el-input>
             </el-form-item>
             <el-form-item label="品牌LOGO" label-width="80px">
                 <el-upload
                     class="avatar-uploader"
-                    action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
+                    action="/api/admin/product/fileUpload"
                     :show-file-list="false"
                     :on-success="handleAvatarSuccess"
                     :before-upload="beforeAvatarUpload"
                 >
-                    <img v-if="imageUrl" :src="imageUrl" class="avatar" />
+                    <img
+                        v-if="trademarkParams.logoUrl"
+                        :src="trademarkParams.logoUrl"
+                        class="avatar"
+                    />
                     <el-icon v-else class="avatar-uploader-icon"><Plus /></el-icon>
                 </el-upload>
             </el-form-item>
@@ -79,9 +88,23 @@ import { onMounted } from 'vue'
 import type { TradeMarkResponseData } from '@/api/product/trademark/type'
 // 引入品牌数据数据类型
 import type { Records } from '@/api/product/trademark/type'
+// 引入品牌类型
+import type { TradeMark } from '@/api/product/trademark/type'
+// 引入上传图片类型
+import type { UploadProps } from 'element-plus/lib/components/upload/src/upload.js'
 
 // 引入请求全部品牌数据接口
 import { reqHasTrademark } from '@/api/product/trademark'
+// 引入新增/更新数据的接口
+import { reqAddOrUpdateTrademark } from '@/api/product/trademark'
+import { reactive } from 'vue'
+import { ElMessage } from 'element-plus'
+
+/*
+
+    -----------------展示数据-------------------
+
+*/
 
 // 当前页码
 const pageNo = ref<number>(1)
@@ -116,8 +139,84 @@ const sizeChange = () => {
     getHasTrademark()
 }
 
+/*
+
+    -----------------新增/更新数据-------------------
+
+*/
+
 // 控制对话框的显示与隐藏
-const dialogFormVisble = ref(true)
+const dialogFormVisble = ref(false)
+// 定义新增品牌数据
+const trademarkParams = reactive<TradeMark>({
+    tmName: '',
+    logoUrl: '',
+})
+
+// 添加品牌按钮的回调
+const addTrademark = () => {
+    // 显示对话框
+    dialogFormVisble.value = true
+}
+
+// 对话框底部取消按钮
+const cancel = () => {
+    // 对话框隐藏
+    dialogFormVisble.value = false
+}
+// 对话框底部确定按钮
+const confirm = async () => {
+    const result: any = await reqAddOrUpdateTrademark(trademarkParams)
+    // 添加|更新品牌成功
+    if (result.code === 200) {
+        // 关闭对话框
+        dialogFormVisble.value = false
+        // 弹出提示信息
+        ElMessage({
+            type: 'success',
+            message: '添加品牌成功',
+        })
+        // 再次进行发送请求获取已有的全部的品牌数据
+        getHasTrademark()
+    } else {
+        // 添加品牌失败
+        ElMessage({
+            type: 'error',
+            message: '添加品牌失败',
+        })
+    }
+}
+
+// 上传图片组件 -> 上传图片之前触发的钩子函数
+const beforeAvatarUpload: UploadProps['beforeUpload'] = (rawFile) => {
+    if (
+        !(
+            rawFile.type === 'image/png' ||
+            rawFile.type === 'image/jpg' ||
+            rawFile.type === 'image/gif' ||
+            rawFile.type === 'image/jpeg'
+        )
+    ) {
+        ElMessage({
+            type: 'error',
+            message: '上传的文件格式务必是JPG|PNG|GIF|JPEG',
+        })
+    }
+    if (rawFile.size / 1024 / 1024 < 4) return true
+    else {
+        ElMessage({
+            type: 'error',
+            message: '上传的文件大小必须小于4M',
+        })
+        return false
+    }
+}
+// 图片上传成功的钩子
+const handleAvatarSuccess: UploadProps['onSuccess'] = (response, uploadFile) => {
+    // response: 即为当前这次上传图片post请求 服务器返回的数据
+    // 收集上传图片的地址 添加品牌的时候将数据带给服务器
+    trademarkParams.logoUrl = response.data!
+}
 </script>
 
 <style scoped>
