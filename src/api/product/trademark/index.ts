@@ -1,6 +1,6 @@
 // 品牌管理模块接口
 import request from '@/utils/request'
-import type { TradeMarkResponseData, TradeMark } from './type'
+import type { TradeMarkResponseData } from './type'
 // 品牌接口地址
 enum API {
     // 获取已有品牌的接口地址
