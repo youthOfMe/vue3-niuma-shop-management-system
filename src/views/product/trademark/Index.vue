@@ -42,6 +42,31 @@
             />
         </div>
     </el-card>
+    <!-- 对话框组件 -->
+    <el-dialog v-model="dialogFormVisble" title="添加品牌">
+        <el-form style="width: 80%">
+            <el-form-item label="品牌名称" label-width="80px">
+                <el-input placeholder="请您输入品牌的名称"></el-input>
+            </el-form-item>
+            <el-form-item label="品牌LOGO" label-width="80px">
+                <el-upload
+                    class="avatar-uploader"
+                    action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
+                    :show-file-list="false"
+                    :on-success="handleAvatarSuccess"
+                    :before-upload="beforeAvatarUpload"
+                >
+                    <img v-if="imageUrl" :src="imageUrl" class="avatar" />
+                    <el-icon v-else class="avatar-uploader-icon"><Plus /></el-icon>
+                </el-upload>
+            </el-form-item>
+        </el-form>
+        <!-- 具名插槽 footer -->
+        <template #footer>
+            <el-button type="primary" size="default" @click="cancel">取消</el-button>
+            <el-button type="primary" size="default" @click="confirm">确定</el-button>
+        </template>
+    </el-dialog>
 </template>
 
 <script setup lang="ts">
@@ -90,6 +115,36 @@ const changePageNo = () => {
 const sizeChange = () => {
     getHasTrademark()
 }
+
+// 控制对话框的显示与隐藏
+const dialogFormVisble = ref(true)
 </script>
 
-<style scoped></style>
+<style scoped>
+.avatar-uploader .avatar {
+    width: 178px;
+    height: 178px;
+    display: block;
+}
+
+.avatar-uploader .el-upload .el-icon {
+    border: 1px dashed var(--el-border-color);
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: var(--el-transition-duration-fast);
+}
+
+.avatar-uploader .el-upload:hover .el-icon {
+    border-color: var(--el-color-primary);
+}
+
+.el-icon.avatar-uploader-icon {
+    font-size: 28px;
+    color: #8c939d;
+    width: 178px;
+    height: 178px;
+    text-align: center;
+}
+</style>
