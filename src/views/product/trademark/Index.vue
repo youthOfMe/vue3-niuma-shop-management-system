@@ -217,6 +217,27 @@ const handleAvatarSuccess: UploadProps['onSuccess'] = (response, uploadFile) => 
     // 收集上传图片的地址 添加品牌的时候将数据带给服务器
     trademarkParams.logoUrl = response.data!
 }
+
+// 品牌校验规则执行函数
+const validatorTmName = (rule: any, value: any, callBack: any) => {
+    // 自定义校验规则
+    if (value.trim().length >= 2) {
+        callBack()
+    } else {
+        callBack(new Error('品牌名称位数大于两位'))
+    }
+}
+// 品牌LOGO图片的自定义校验规则
+const validatorLogoUrl = (rule: any, value: any, callBack: any) => {
+    // 图片上传校验规则
+    if (value) callBack()
+    else callBack(new Error('Logo的图片请务必上传'))
+}
+// 表单校验规则
+const rules = {
+    tmName: [{ required: true, trigger: 'blur', validator: validatorTmName }],
+    logoUrl: [{ required: true, validator: validatorLogoUrl }],
+}
 </script>
 
 <style scoped>
