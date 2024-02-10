@@ -4,15 +4,27 @@
         <el-button type="primary" size="default" icon="Plus">添加品牌</el-button>
         <!-- 表格组件: 用于展示已有的平台数据 -->
         <el-table style="margin: 10px 0" :border="true" :data="trademarkArr">
-            <el-table-colum label="序号" width="80px" aligin="center" type="index"></el-table-colum>
-            <el-table-column label="品牌名称">
-                <template></template>
+            <el-table-column
+                label="序号"
+                width="80px"
+                aligin="center"
+                type="index"
+            ></el-table-column>
+            <el-table-column label="品牌名称" prop="tmName">
+                <template #="{ row }">
+                    <pre style="color: brown">{{ row.tmName }}</pre>
+                </template>
             </el-table-column>
             <el-table-column label="品牌LOGO">
-                <template></template>
+                <template #="{ row }">
+                    <img :src="row.logoUrl" style="width: 100px; height: 100px" />
+                </template>
             </el-table-column>
             <el-table-column label="品牌操作">
-                <template></template>
+                <template #="{ row }">
+                    <el-button type="primary" size="small" icon="Edit"></el-button>
+                    <el-button type="danger" size="small" icon="Delete"></el-button>
+                </template>
             </el-table-column>
         </el-table>
         <!-- 分页器 -->
