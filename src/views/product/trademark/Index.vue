@@ -81,6 +81,15 @@ const getHasTrademark = async () => {
 onMounted(() => {
     getHasTrademark()
 })
+
+// 分页器页码发生变化时触发
+const changePageNo = () => {
+    getHasTrademark()
+}
+// 当下拉菜单发生变化时触发
+const sizeChange = () => {
+    getHasTrademark()
+}
 </script>
 
 <style scoped></style>
