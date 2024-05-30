@@ -1,15 +1,14 @@
-@import './reset.scss';
+@import './reset';
 
 // 滚动条外观设计
 ::-webkit-scrollbar {
-    width: 10px;
+  width: 10px;
 }
 ::-webkit-scrollbar-track {
-    background: $base-menu-background;
+  background: $base-menu-background;
 }
-
 ::-webkit-scrollbar-thumb {
-    width: 10px;
-    background-color: yellowgreen;
-    border-radius: 10px;
+  width: 10px;
+  border-radius: 10px;
+  background-color: yellowgreen;
 }

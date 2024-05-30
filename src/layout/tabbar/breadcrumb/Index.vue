@@ -13,7 +13,7 @@
             :to="item.path"
         >
             <!-- 图标 -->
-            <el-icon style="margin: 0px 5px">
+            <el-icon style="margin: 0 5px">
                 <component :is="item.meta.icon"></component>
             </el-icon>
             <!-- 面包屑展示疲惫路由的标题 -->

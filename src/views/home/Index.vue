@@ -1,7 +1,7 @@
 <template>
-    <div>
-        <h1>这是主页</h1>
-    </div>
+  <div>
+    <h1>这是主页</h1>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -16,7 +16,7 @@ const userStore = useUserStore()
 
 // 首页挂载完毕后发请求 请求用户信息
 onMounted(() => {
-    console.log(userStore.userInfo())
+  console.log(userStore.userInfo())
 })
 </script>
 

@@ -1,33 +1,33 @@
 <template>
-    <div class="layout_container">
-        <!-- 左侧菜单 -->
-        <div class="layout_slider" :class="{ fold: LayOutSettingStore.fold }">
-            <Logo></Logo>
-            <!-- 展示菜单 -->
-            <!-- 滚动组件 -->
-            <el-scrollbar class="scrollbar">
-                <!-- 菜单组件 -->
-                <el-menu
-                    background-color="#001529"
-                    text-color="white"
-                    active-text-color="yellowgreen"
-                    :default-active="$route.path"
-                    :collapse="LayOutSettingStore.fold"
-                >
-                    <!-- 采用封装 -->
-                    <Menu :menu-list="userStore.menuRoutes"></Menu>
-                </el-menu>
-            </el-scrollbar>
-        </div>
-        <!-- 顶部导航 -->
-        <div class="layout_tabBar" :class="{ fold: LayOutSettingStore.fold }">
-            <Tabbar></Tabbar>
-        </div>
-        <!-- 内容展示区域 -->
-        <div class="layout_main" :class="{ fold: LayOutSettingStore.fold }">
-            <Main></Main>
-        </div>
+  <div class="layout_container">
+    <!-- 左侧菜单 -->
+    <div class="layout_slider" :class="{ fold: LayOutSettingStore.fold }">
+      <Logo></Logo>
+      <!-- 展示菜单 -->
+      <!-- 滚动组件 -->
+      <el-scrollbar class="scrollbar">
+        <!-- 菜单组件 -->
+        <el-menu
+          background-color="#ffffff"
+          text-color="#000000"
+          active-text-color="yellowgreen"
+          :default-active="$route.path"
+          :collapse="LayOutSettingStore.fold"
+        >
+          <!-- 采用封装 -->
+          <Menu :menu-list="userStore.menuRoutes"></Menu>
+        </el-menu>
+      </el-scrollbar>
     </div>
+    <!-- 顶部导航 -->
+    <div class="layout_tabBar" :class="{ fold: LayOutSettingStore.fold }">
+      <Tabbar></Tabbar>
+    </div>
+    <!-- 内容展示区域 -->
+    <div class="layout_main" :class="{ fold: LayOutSettingStore.fold }">
+      <Main></Main>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -59,57 +59,51 @@ const $route = useRoute()
 
 <style scoped lang="scss">
 .layout_container {
-    width: 100%;
-    height: 100vh;
+  width: 100%;
+  height: 100vh;
 }
-
 .layout_slider {
-    color: white;
-    width: $base-menu-width;
-    height: 100vh;
-    background-color: $base-menu-background;
-    transition: all 0.3s;
-    .scrollbar {
-        width: 100%;
-        height: calc(100vh - $base-menu-logo-height - 40px);
-        .el-menu {
-            border-right: 0;
-        }
+  width: $base-menu-width;
+  height: 100vh;
+  color: white;
+  background-color: $base-menu-background;
+  transition: all 0.3s;
+  .scrollbar {
+    width: 100%;
+    height: calc(100vh - $base-menu-logo-height - 40px);
+    .el-menu {
+      border-right: 0;
     }
-
-    &.fold {
-        width: $base-menu-min-width;
-    }
+  }
+  &.fold {
+    width: $base-menu-min-width;
+  }
 }
-
 .layout_tabBar {
-    width: calc(100% - $base-menu-width);
-    height: $base-tabbar-height;
-    position: fixed;
-    top: 0;
-    left: $base-menu-width;
-
-    transition: all 0.3s;
-    &.fold {
-        width: calc(100vw - $base-menu-min-width);
-        left: $base-menu-min-width;
-    }
+  position: fixed;
+  top: 0;
+  left: $base-menu-width;
+  width: calc(100% - $base-menu-width);
+  height: $base-tabbar-height;
+  transition: all 0.3s;
+  &.fold {
+    left: $base-menu-min-width;
+    width: calc(100vw - $base-menu-min-width);
+  }
 }
-
 .layout_main {
-    position: absolute;
-    width: calc(100% - $base-menu-width);
-    height: calc(100vh - $base-tabbar-height);
-    /* background-color: yellowgreen; */
-    left: $base-menu-width;
-    top: $base-tabbar-height;
-    padding: 20px;
-    overflow: auto;
-
-    transition: all 0.3s;
-    &.fold {
-        width: calc(100vw - $base-menu-min-width);
-        left: $base-menu-min-width;
-    }
+  position: absolute;
+  top: $base-tabbar-height;
+  left: $base-menu-width;
+  overflow: auto;
+  padding: 20px;
+  width: calc(100% - $base-menu-width);
+  height: calc(100vh - $base-tabbar-height);
+  background-color: #eeeeee;
+  transition: all 0.3s;
+  &.fold {
+    left: $base-menu-min-width;
+    width: calc(100vw - $base-menu-min-width);
+  }
 }
 </style>
