@@ -23,7 +23,7 @@ import pinia from './store'
 const app = createApp(App)
 // 安装element-plus插件
 app.use(ElementPlus, {
-    locale: zhCn,
+  locale: zhCn,
 })
 // 注册路由模板
 app.use(router as any)

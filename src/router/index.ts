@@ -4,9 +4,9 @@ import { constantRoute } from './routes'
 
 // 创建路由器
 const router = createRouter({
-    // 路由模式history
-    history: createWebHistory(),
-    routes: constantRoute,
+  // 路由模式history
+  history: createWebHistory(),
+  routes: constantRoute,
 })
 
 export default router
